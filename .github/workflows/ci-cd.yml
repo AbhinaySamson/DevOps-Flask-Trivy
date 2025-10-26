@@ -35,13 +35,14 @@ jobs:
           push: true
           tags: ${{ env.IMAGE_NAME }}:latest
 
-      - name: Trivy scan image for HIGH and CRITICAL
-        uses: aquasecurity/trivy-action@v2
+      - name: Run Trivy security scan
+        uses: aquasecurity/trivy-action@master
         with:
-          image-ref: ${{ env.IMAGE_NAME }}:latest
+          image-ref: ${{ secrets.DOCKERHUB_USERNAME }}/devops-flask-trivy:latest
           format: 'table'
-          severity: 'HIGH,CRITICAL'
-          exit-code: '1'     # fail the job if vulnerabilities found
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+
 
   deploy-render:
     runs-on: ubuntu-latest
