@@ -1,5 +1,5 @@
 # Automated CI/CD Pipeline with Flask + Docker + Trivy
-Hello
+
 ## 🔧 Project Overview
 This project demonstrates a **DevOps CI/CD workflow** that automatically:
 1. Builds a Docker image for a Flask app.
